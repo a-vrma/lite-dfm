@@ -5,6 +5,7 @@ let s:number_default = &number
 let s:foldcolumn_default = &foldcolumn
 let s:numberwidth_default = &numberwidth
 let s:gitgutter_default = get(g:, 'gitgutter_enabled', 0)
+let s:lsp_default = &linespace
 let s:tabline_default = &showtabline
 if has('gui_running')
   let s:fullscreen_default = has('fullscreen') && &fullscreen
@@ -105,6 +106,7 @@ function! LiteDFM()
   let &ruler = get(g:, 'lite_dfm_keep_ruler', 0)
   set number
   set laststatus=0
+  set linespace=6
   set showtabline=0
   call s:ForEachWindow('set numberwidth=' . s:numberwidth_offset . ' foldcolumn=' . s:foldcolumn_offset)
 
@@ -135,7 +137,8 @@ function! LiteDFMClose()
   let &ruler = s:ruler_default
   let &number = s:number_default
   let &laststatus = s:laststatus_default
-  let &showtabline= s:tabline_default
+  let &linespace = s:lsp_default
+  let &showtabline = s:tabline_default
   call s:ForEachWindow('set numberwidth=' . s:numberwidth_default . ' foldcolumn=' . s:foldcolumn_default)
 
   try
@@ -172,3 +175,4 @@ endfunction
 command! LiteDFM call LiteDFM()
 command! LiteDFMClose call LiteDFMClose()
 command! LiteDFMToggle call LiteDFMToggle()
+" vim: tabstop=2
