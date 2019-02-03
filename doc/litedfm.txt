@@ -50,6 +50,7 @@ distraction-free-mode:
 
     Hide the statusbar
     Hide the ruler
+    Hide the line with tab page labels
     Hide GitGutter if it is enabled
     For each window, change the width of the line number and fold columns to:
       Unless the window is Gundo, NERDTree, or Tagbar:

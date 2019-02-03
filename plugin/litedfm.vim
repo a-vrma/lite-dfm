@@ -28,8 +28,8 @@ function! s:LoadOffsets()
 endfunction
 
 
-" See if running CLI or GUI Vim
-" If user has termguicolors enabled, gui vim is chosen regardless.
+" Set the context for changing colors: gui (24-bit) or cterm (256/16)
+" If user has termguicolors enabled, gui is chosen.
 let s:context = (has('gui_running') || &termguicolors) ? 'gui' : 'cterm'
 
 " List of filetypes where window offsets should not be done
