@@ -87,7 +87,8 @@ function! s:LoadDFMColors()
   let s:FoldColumnBG = s:LoadColor('FoldColumn', 'bg')
 
   " Allow users to manually specify the color used to hide UI elements
-  let s:NormalBG = get(g:, 'lite_dfm_normal_bg_' . s:context, s:LoadColor('Normal', 'bg'))
+  " let s:NormalBG = get(g:, 'lite_dfm_normal_bg_' . s:context, s:LoadColor('Normal', 'bg'))
+  let s:NormalBG = '00'
 endfunction
 
 
@@ -143,13 +144,22 @@ function! LiteDFMClose()
 
   try
     execute s:Restore('LineNr')
-    execute s:Restore('CursorLineNR')
-    execute s:Restore('NonText')
-    execute s:Restore('FoldColumn')
   catch /.*/
     " Attempting to Restore values fails when they were never changed to begin
     " with. This is VimScript, so we don't care and just swallow the
     " exception.
+  endtry
+  try
+    execute s:Restore('CursorLineNR')
+  catch /.*/
+  endtry
+  try
+    execute s:Restore('NonText')
+  catch /.*/
+  endtry
+  try
+    execute s:Restore('FoldColumn')
+  catch /.*/
   endtry
 
   if has('gui_running')
